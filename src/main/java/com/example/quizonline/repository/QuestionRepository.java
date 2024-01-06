@@ -12,7 +12,7 @@ import java.util.List;
 public interface QuestionRepository extends JpaRepository<Question,Long> {
 
     @Query("SELECT DISTINCT q.subject FROM Question q")
-    List<String> findDistinctSubjects();
+    List<String> findDistinctSubject();
 
-    Page<Question> findBySubjects(String subjects, Pageable pageable);
+    Page<Question> findBySubject(String subjects, Pageable pageable);
 }

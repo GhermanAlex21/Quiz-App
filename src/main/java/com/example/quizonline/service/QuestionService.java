@@ -33,7 +33,7 @@ public class QuestionService implements IQuestionService{
 
     @Override
     public List<String> getAllSubjects() {
-        return questionRepository.findDistinctSubjects();
+        return questionRepository.findDistinctSubject();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class QuestionService implements IQuestionService{
             Question updatedQuestion = theQuestion.get();
             updatedQuestion.setQuestion(question.getQuestion());
             updatedQuestion.setChoices(question.getChoices());
-            updatedQuestion.setCorrectAnswears(question.getCorrectAnswears());
+            updatedQuestion.setCorrectAnswers(question.getCorrectAnswers());
             return questionRepository.save(updatedQuestion);
         }else {
             throw new ChangeSetPersister.NotFoundException();
@@ -60,6 +60,6 @@ public class QuestionService implements IQuestionService{
     @Override
     public List<Question> getQuestionsForUser(Integer numOfQuestions, String subjects) {
         Pageable pageable= PageRequest.of(0,numOfQuestions);
-        return questionRepository.findBySubjects(subjects,pageable).getContent();
+        return questionRepository.findBySubject(subjects,pageable).getContent();
     }
 }

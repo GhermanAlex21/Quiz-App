@@ -28,5 +28,5 @@ public class Question {
 
     @NotBlank
     @ElementCollection
-    private List<String> correctAnswears;
+    private List<String> correctAnswers;
 }

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,5 +59,15 @@ public class QuestionController {
         List<String> subjects=questionService.getAllSubjects();
         return ResponseEntity.ok(subjects);
     }
+@GetMapping("fetch-questions-for-user")
+    public ResponseEntity<List<Question>> getQuestionsForUser(@RequestParam Integer numOfQuestions,@RequestParam String subject){
 
+        List<Question> allQuestions= questionService.getQuestionsForUser(numOfQuestions,subject);
+        List<Question> mutableQuestions = new ArrayList<>(allQuestions);
+        Collections.shuffle(mutableQuestions);
+
+        int availableQuestions = Math.min(numOfQuestions,mutableQuestions.size());
+        List<Question> randomQuestion= mutableQuestions.subList(0,availableQuestions);
+        return ResponseEntity.ok(randomQuestion);
+    }
 }
