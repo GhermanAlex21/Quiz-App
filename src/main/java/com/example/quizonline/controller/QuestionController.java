@@ -59,7 +59,7 @@ public class QuestionController {
         List<String> subjects=questionService.getAllSubjects();
         return ResponseEntity.ok(subjects);
     }
-@GetMapping("fetch-questions-for-user")
+@GetMapping("/quiz/fetch-questions-for-user")
     public ResponseEntity<List<Question>> getQuestionsForUser(@RequestParam Integer numOfQuestions,@RequestParam String subject){
 
         List<Question> allQuestions= questionService.getQuestionsForUser(numOfQuestions,subject);
