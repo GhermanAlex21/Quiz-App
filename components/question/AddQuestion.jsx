@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { createQuestion, getSubjects } from "../../utils/QuizService"
+import { Link } from "react-router-dom"
 
 const AddQuestion = () =>{
     const[question, setQuestion]=useState("")
@@ -73,7 +74,7 @@ const AddQuestion = () =>{
             }),
         subject}
         await createQuestion(result)
-        setQuestion("")
+        setQuestionText("")
         setQuestionType("single")
         setChoices([""])
         setCorrectAnswer([""])
