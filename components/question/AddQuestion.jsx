@@ -227,7 +227,6 @@ const AddQuestion = () =>{
 										</button>
 									</div>
 								)}
-
                                 {!correctAnswer.length &&<p>Please enter at least 1 correct answer</p>}
                                 <div className="btn-group">
                                     <button type="submit"
@@ -238,20 +237,11 @@ const AddQuestion = () =>{
 										Back to existing questions
                                     </Link>
                                 </div>
-
                             </form>
                         </div>
-
                     </div>
-
-
                 </div>
-
-
             </div>
-
-
-
         </div>
     )
 }
