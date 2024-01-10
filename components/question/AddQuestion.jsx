@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 const AddQuestion = () =>{
     const[question, setQuestion]=useState("")
     const[questionType,setQuestionType]=useState("single")
-    const[choices,setChoices]=useState([""])
+    const[choices,setChoices]=useState(["A."])
     const[correctAnswer,setCorrectAnswer] = useState([""])
     const[subject,setSubject]=useState("")
     const[newSubject,setNewSubject]=useState("")
@@ -34,7 +34,7 @@ const AddQuestion = () =>{
         const lastChoiceLetter=lastChoice ? lastChoice.charAt(0): "A"
         const newChoiceLetter= String.fromCharCode(lastChoiceLetter.charCodeAt(0)+1)
         const newChoice=`${newChoiceLetter}.`
-        setChoices(...[choices,newChoice])
+        setChoices([...choices,newChoice])
 
     }
 
@@ -173,7 +173,7 @@ const AddQuestion = () =>{
                                             <button
                                             type="button"
                                             onClick={()=>handleRemoveChoice(index)}
-                                            className="btn btn-outline-danger btn-sm">
+                                            className="btn btn-outline-danger ">
                                                 Remove
                                             </button>
                                         </div>
@@ -181,7 +181,7 @@ const AddQuestion = () =>{
                                      <button
                                             type="button"
                                             onClick={handleAddChoice}
-                                            className="btn btn-outline-primary btn-sm">
+                                            className="btn btn-outline-primary ">
                                                 Add Choice
                                             </button>
                                     </div>
