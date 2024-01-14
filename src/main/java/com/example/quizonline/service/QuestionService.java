@@ -27,8 +27,8 @@ public class QuestionService implements IQuestionService{
     }
 
     @Override
-    public Optional<Question> getQuestionById(Long Id) {
-        return questionRepository.findById(Id);
+    public Optional<Question> getQuestionById(Long id) {
+        return questionRepository.findById(id);
     }
 
     @Override
@@ -37,9 +37,9 @@ public class QuestionService implements IQuestionService{
     }
 
     @Override
-    public Question updateQuestion(Long Id, Question question) throws ChangeSetPersister.NotFoundException {
-        Optional<Question> theQuestion=this.getQuestionById(Id);
-        if(theQuestion.isPresent()){
+    public Question updateQuestion(Long id, Question question) throws ChangeSetPersister.NotFoundException {
+        Optional<Question> theQuestion = this.getQuestionById(id);
+        if (theQuestion.isPresent()){
             Question updatedQuestion = theQuestion.get();
             updatedQuestion.setQuestion(question.getQuestion());
             updatedQuestion.setChoices(question.getChoices());
@@ -50,16 +50,13 @@ public class QuestionService implements IQuestionService{
         }
 
     }
-
     @Override
-    public void deleteQuestion(Long Id) {
-        questionRepository.deleteById(Id);
-
+    public void deleteQuestion(Long id) {
+        questionRepository.deleteById(id);
     }
-
     @Override
-    public List<Question> getQuestionsForUser(Integer numOfQuestions, String subjects) {
-        Pageable pageable= PageRequest.of(0,numOfQuestions);
-        return questionRepository.findBySubject(subjects,pageable).getContent();
+    public List<Question> getQuestionsForUser(Integer numOfQuestions, String subject) {
+        Pageable pageable = PageRequest.of(0, numOfQuestions);
+        return questionRepository.findBySubject(subject, pageable).getContent();
     }
 }

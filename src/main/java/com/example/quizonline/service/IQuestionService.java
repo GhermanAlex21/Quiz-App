@@ -12,15 +12,16 @@ public interface IQuestionService {
 
     List<Question> getAllQuestions();
 
-    Optional<Question> getQuestionById(Long Id);
+    Optional<Question> getQuestionById(Long id);
 
     List<String> getAllSubjects();
 
-    Question updateQuestion(Long Id,Question question) throws ChangeSetPersister.NotFoundException;
+    Question updateQuestion(Long id, Question question) throws ChangeSetPersister.NotFoundException;
 
-    void deleteQuestion(Long Id);
+    void  deleteQuestion(Long id);
 
-    List<Question> getQuestionsForUser(Integer numOfQuestions,String subjects);
+    List<Question> getQuestionsForUser(Integer numOfQuestions, String subject);
 
 
 }
+
